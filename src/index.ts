@@ -1,4 +1,5 @@
 class Change {
+  // このクラスはあくまで値を保持することを目的とする
   price: number;
   amount: number;
   type: string;
@@ -9,6 +10,7 @@ class Change {
     this.type = type;
   }
 
+  // 今後変更される可能性が高いからChangeクラスから出した方がいい
   dispayChangeDetails() {
     return `${this.price}円${this.type} ${this.amount}枚`;
   }
@@ -16,6 +18,7 @@ class Change {
 type MoneyTypes = { [key: number]: string };
 
 const moneyTypes: MoneyTypes = {
+  // 10個くらいだったらベタが書きでいいかも
   10000: "紙幣",
   5000: "紙幣",
   1000: "紙幣",
@@ -50,6 +53,8 @@ const bussinessLogic = (price: number, paid: number) => {
       change -= denomination * count;
     }
   }
+  // お釣り配列だと複数の支払いのお釣りだと思ってしまう
+  // changeByCoinsなどが良さそう
   return changeArray;
 };
 
